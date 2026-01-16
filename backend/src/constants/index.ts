@@ -31,3 +31,8 @@ export {
   type BenefitDefaultsType,
   type BenefitType,
 } from './benefit';
+
+/**
+ * Contact constants
+ */
+export { CONTACT_LIMITS, type ContactLimitsType } from './contact';

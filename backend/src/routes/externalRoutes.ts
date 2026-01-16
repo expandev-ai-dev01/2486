@@ -9,6 +9,7 @@
 import { Router } from 'express';
 import * as productController from '@/api/external/product/controller';
 import * as benefitController from '@/api/external/benefit/controller';
+import * as contactController from '@/api/external/contact/controller';
 
 const router = Router();
 
@@ -25,5 +26,11 @@ router.get('/product/:id', productController.getHandler);
  */
 router.get('/benefit', benefitController.listHandler);
 router.get('/benefit/:id', benefitController.getHandler);
+
+/**
+ * @rule {be-route-configuration}
+ * Contact routes - /api/external/contact
+ */
+router.post('/contact', contactController.createHandler);
 
 export default router;
