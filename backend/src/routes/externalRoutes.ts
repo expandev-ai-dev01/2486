@@ -7,15 +7,15 @@
  */
 
 import { Router } from 'express';
+import * as productController from '@/api/external/product/controller';
 
 const router = Router();
 
 /**
  * @rule {be-route-configuration}
- * External routes will be added here as features are implemented.
- * Example:
- * router.use('/security', securityRoutes);
- * router.use('/public', publicRoutes);
+ * Product routes - /api/external/product
  */
+router.get('/product', productController.listHandler);
+router.get('/product/:id', productController.getHandler);
 
 export default router;
