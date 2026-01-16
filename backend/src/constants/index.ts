@@ -18,3 +18,16 @@ export {
   type ProductDefaultsType,
   type ProductCategory,
 } from './product';
+
+/**
+ * Benefit constants
+ */
+export {
+  BENEFIT_TYPES,
+  BENEFIT_LIMITS,
+  BENEFIT_DEFAULTS,
+  type BenefitTypesType,
+  type BenefitLimitsType,
+  type BenefitDefaultsType,
+  type BenefitType,
+} from './benefit';

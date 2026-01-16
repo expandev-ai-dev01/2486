@@ -10,3 +10,8 @@
  * Product instances
  */
 export { productStore, type ProductRecord } from './product';
+
+/**
+ * Benefit instances
+ */
+export { benefitStore, type BenefitRecord } from './benefit';

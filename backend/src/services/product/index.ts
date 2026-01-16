@@ -7,4 +7,9 @@
 
 export * from './productTypes';
 export * from './productService';
-export * from './productValidation';
+export {
+  paramsSchema as productParamsSchema,
+  categoryQuerySchema,
+  type ParamsInput as ProductParamsInput,
+  type CategoryQueryInput,
+} from './productValidation';

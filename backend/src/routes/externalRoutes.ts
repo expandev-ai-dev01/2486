@@ -8,6 +8,7 @@
 
 import { Router } from 'express';
 import * as productController from '@/api/external/product/controller';
+import * as benefitController from '@/api/external/benefit/controller';
 
 const router = Router();
 
@@ -17,5 +18,12 @@ const router = Router();
  */
 router.get('/product', productController.listHandler);
 router.get('/product/:id', productController.getHandler);
+
+/**
+ * @rule {be-route-configuration}
+ * Benefit routes - /api/external/benefit
+ */
+router.get('/benefit', benefitController.listHandler);
+router.get('/benefit/:id', benefitController.getHandler);
 
 export default router;
