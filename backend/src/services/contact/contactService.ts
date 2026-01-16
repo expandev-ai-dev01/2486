@@ -2,18 +2,21 @@
  * @summary
  * Business logic for Contact entity.
  * Handles contact form submission using in-memory storage.
+ * Sends confirmation email after successful contact creation.
  *
  * @module services/contact/contactService
  */
 
 import { contactStore } from '@/instances';
 import { ServiceError } from '@/utils';
+import { sendConfirmationEmail } from '@/services/email';
 import { ContactCreateResponse } from './contactTypes';
 import { createSchema } from './contactValidation';
 
 /**
  * @summary
  * Creates a new contact submission with validated data.
+ * Sends confirmation email to the contact after successful creation.
  *
  * @function contactCreate
  * @module services/contact
@@ -51,6 +54,21 @@ export async function contactCreate(body: unknown): Promise<ContactCreateRespons
   };
 
   contactStore.add(newContact);
+
+  /**
+   * @rule {be-email-confirmation}
+   * Send confirmation email after successful contact creation
+   */
+  try {
+    await sendConfirmationEmail({
+      recipientName: params.name,
+      recipientEmail: params.email,
+    });
+  } catch (emailError: any) {
+    // Log email error but don't fail the contact creation
+    console.error('Failed to send confirmation email:', emailError);
+    // Contact was created successfully, email failure is non-critical
+  }
 
   return {
     message: 'Obrigado! Entraremos em contato em breve',

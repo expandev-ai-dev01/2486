@@ -9,3 +9,4 @@
 export * from './product';
 export * from './benefit';
 export * from './contact';
+export * from './email';
